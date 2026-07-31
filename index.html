@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Blueprint Onboarding B2B v2 · AgendaPro</title>
+<link rel="preconnect" href="https://api.fontshare.com"/>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,600&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy:#1D1D3D; --navy-mid:#7A7DA4; --morado:#812DF2; --morado-pale:#EEE2FF;
+  --naranja:#FF7A59; --gris:#F5F5F5; --gris-mid:#A8A8A8; --line:#E4E4EC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Clash Display',system-ui,sans-serif;background:var(--gris);color:var(--navy);line-height:1.45}
+#gate{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(145deg,#1D1D3D 0%,#3a2a6a 55%,#812DF2 120%);padding:1.5rem}
+#gate.hidden{display:none}
+.gate-card{background:#fff;border-radius:12px;padding:2rem 1.75rem;max-width:400px;width:100%;
+  box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.gate-card h1{font-size:1.25rem;font-weight:600;margin-bottom:.35rem}
+.gate-card p{font-size:.9rem;color:var(--navy-mid);font-weight:300;margin-bottom:1.1rem}
+.gate-card input{width:100%;padding:.7rem .85rem;border:1px solid var(--line);border-radius:8px;font:inherit;margin-bottom:.75rem}
+.gate-card button{width:100%;padding:.75rem;border:0;border-radius:8px;background:var(--morado);color:#fff;font:inherit;font-weight:500;cursor:pointer}
+.gate-card .err{color:var(--naranja);font-size:.8rem;min-height:1.2em}
+.gate-card .fine{font-size:.72rem;color:var(--gris-mid);margin-top:.85rem}
+.page{max-width:880px;margin:0 auto;padding:2rem 1.25rem 4rem}
+.badge{display:inline-block;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--naranja);background:#FFF0EB;padding:.35rem .7rem;border-radius:4px;margin-bottom:.85rem}
+h1{font-size:clamp(1.4rem,3vw,1.85rem);font-weight:600;letter-spacing:-.02em;margin:1rem 0 .5rem}
+.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.3rem;margin:1rem 0}
+.card h2{font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--morado);margin-bottom:.65rem}
+h3{font-size:1rem;font-weight:560;margin:1rem 0 .45rem}
+p,li{font-size:.92rem;font-weight:300;margin:.35rem 0}
+ul,ol{padding-left:1.2rem;margin:.4rem 0}
+table{width:100%;border-collapse:collapse;margin:.6rem 0;font-size:.84rem}
+th,td{border-bottom:1px solid var(--line);padding:.5rem .35rem;text-align:left;vertical-align:top;font-weight:300}
+th{font-weight:500;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--navy-mid)}
+pre.flow{font-family:ui-monospace,Menlo,monospace;font-size:.75rem;background:var(--morado-pale);
+  padding:.85rem 1rem;border-radius:8px;margin:.75rem 0;white-space:pre-wrap;line-height:1.55}
+code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;background:#f0f0f5;padding:.05em .3em;border-radius:4px}
+hr{border:0;border-top:1px solid var(--line);margin:1.25rem 0}
+footer{margin-top:1.5rem;font-size:.75rem;color:var(--gris-mid);font-weight:300}
+@media print{#gate{display:none!important} body{background:#fff}}
+</style>
+</head>
+<body>
+<div id="gate">
+  <div class="gate-card">
+    <h1>Blueprint Onboarding B2B</h1>
+    <p>Versión 2.0 canónica · Uso interno AgendaPro</p>
+    <div class="err" id="gate-err"></div>
+    <input id="gate-input" type="password" placeholder="Clave interna" autocomplete="off"/>
+    <button type="button" id="gate-btn">Entrar</button>
+    <p class="fine">Clave del equipo · no es autenticación corporativa</p>
+  </div>
+</div>
+<main class="page" id="app" hidden>
+  <div class="badge">Enablement · Canónico v2.0</div>
+<h1>AgendaPro — Blueprint Onboarding B2B (Kickoff + setup inicial)</h1>
+
+<p><strong>Versión:</strong> 2.0 · <strong>Canónico</strong> · Uso interno  </p>
+<p><strong>Segmento:</strong> B2B3+ · <strong>Canal sesión:</strong> Meet/Zoom + pantalla compartida  </p>
+<p><strong>Registro de notas del kickoff:</strong> lista de tareas <strong>B2B3+ en Company Management</strong> (no HubSpot)  </p>
+<p><strong>Complemento TL (rampa / shadow):</strong> <code>Documents/Brief-TL-Blueprint-Kickoff-B2B.md</code></p>
+
+<p>Este documento es la <strong>única fuente de verdad</strong> del estándar de primera sesión. Si otro material contradice este paquete, manda la v2.0.</p>
+
+<hr/>
+
+<h1>0. Portada holística (1 página)</h1>
+
+<section class="card" id="problema-que-resuelve"><h2>Problema que resuelve</h2>
+<p>Cumplir hitos de onboarding <strong>sin</strong> que el cliente entienda qué compró ni qué priorizar genera <strong>no-uso</strong> y churn temprano. El kickoff técnico-first (config / POS antes de escuchar) acelera ese riesgo.</p>
+
+</section>
+<section class="card" id="resultado-que-buscamos"><h2>Resultado que buscamos</h2>
+<p>Cliente con <strong>claridad + vínculo + plan</strong> en la 1ª sesión; config SaaS avanzada según tiempo; <strong>2ª sesión agendada</strong>; prioridad escrita en <strong>tareas B2B3+ CM</strong>.</p>
+
+</section>
+<section class="card" id="de-pago-a-2-sesi-n"><h2>De pago a 2ª sesión</h2>
+
+<pre class="flow">
+Pago / traspaso ventas
+
+  → ISR: bienvenida Chatwoot (firma {{ agent.name }}) + link agendar
+
+  → Onboarder: persistencia hasta agendar (≤7 días)
+
+  → Sesión 45–55 min (+10 multi-sede)
+
+       Bloque A ~15 min: encuadre → 4 temas (diálogo) → espejo → tareas B2B3 CM
+
+       Bloque B: config SaaS según tiempo
+
+       Bloque C: cierre + 2ª sesión
+
+  → Continuidad onboarding (plan priorizado)
+
+</pre>
+
+</section>
+<section class="card" id="se-ales-de-proceso-leading-no-reemplazan-okr-de-gerencia"><h2>Señales de proceso (leading — no reemplazan OKR de gerencia)</h2>
+<table>
+<tr><th>Señal</th><th>Dónde se ve</th></tr>
+<tr><td>4 temas + espejo en 1ª</td><td>Diio / observación TL</td></tr>
+<tr><td>Prioridad en tareas B2B3+ CM</td><td>Company Management</td></tr>
+<tr><td>2ª sesión agendada en la 1ª call</td><td>Calendario</td></tr>
+<tr><td>Sin config profunda en primeros ~10 min sin espejo</td><td>Diio</td></tr>
+</table>
+
+<hr/>
+
+</section>
+<h1>1. Claridad: qué es / qué no es</h1>
+
+<table>
+<tr><th>Es</th><th>No es</th></tr>
+<tr><td>Estándar de <strong>1ª sesión SaaS</strong> (kickoff consultivo + setup)</td><td>Capacitación POS + boletas</td></tr>
+<tr><td>Mapa de <strong>escucha</strong> (4 temas) + espejo</td><td>Cuestionario anunciado al cliente</td></tr>
+<tr><td>Criterio de éxito <strong>consultivo</strong></td><td>“Agenda matriz 100% terminada” como único éxito</td></tr>
+<tr><td>Registro en <strong>tareas B2B3+ CM</strong></td><td>Notas solo en HubSpot / chat suelto</td></tr>
+</table>
+
+<h3>Out of scope (esta reunión / esta rampa JR)</h3>
+<ul><li>POS, boletas, máquina, iPad, formularios SII  </li><li>Checklist previo por WhatsApp (sedes/servicios/horarios)  </li><li>Grupo de WhatsApp con el cliente  </li><li>JR en cola POS+boletas al inicio de rampa  </li></ul>
+
+<h3>In scope</h3>
+<ul><li>Encuadre, 4 temas, espejo, registro CM, config SaaS (sedes→…→link/prueba si da), cierre con 2ª sesión, persistencia pre-agenda</li></ul>
+
+<hr/>
+
+<h1>2. Competencias previas (para poder replicar)</h1>
+<p>Quien ejecuta debe tener acceso a:</p>
+<ul><li>Company Management (journey / lista de tareas B2B3+)  </li><li>Chatwoot línea onboarding (o continuidad del hilo)  </li><li>Calendario de agendamiento del onboarder  </li><li>Diio (grabación / revisión)  </li><li>Cuenta del cliente (personificación / pantalla compartida según política)</li></ul>
+
+<hr/>
+
+<h1>3. RACI (quién hace qué)</h1>
+
+<table>
+<tr><th>Paso</th><th>ISR</th><th>Onboarder</th><th>TL</th><th>Contactabilidad (2º asesor)</th></tr>
+<tr><td>Bienvenida + credenciales + link</td><td><strong>R</strong></td><td>C (firma en template)</td><td>I</td><td>—</td></tr>
+<tr><td>Persistencia hasta agendar</td><td>I</td><td><strong>R</strong></td><td>A (calidad/volumen)</td><td>—</td></tr>
+<tr><td>Kickoff + espejo + tareas B2B3 CM</td><td>—</td><td><strong>R</strong></td><td>C (shadow/calibración)</td><td>—</td></tr>
+<tr><td>Config SaaS en vivo</td><td>—</td><td><strong>R</strong></td><td>C</td><td>—</td></tr>
+<tr><td>Agendar 2ª sesión</td><td>—</td><td><strong>R</strong></td><td>I</td><td>—</td></tr>
+<tr><td>Control cruzado anti-ghosting</td><td>—</td><td>C (sigue dueño)</td><td>A</td><td><strong>R</strong> (intervención)</td></tr>
+</table>
+
+<p>R = responsable · A = accountable · C = consultado · I = informado</p>
+
+<hr/>
+
+<h1>4. Acción × dueño × evidencia</h1>
+
+<table>
+<tr><th>#</th><th>Acción concreta</th><th>Dueño</th><th>Evidencia de “hecho”</th></tr>
+<tr><td>1</td><td>Enviar bienvenida Chatwoot con credenciales + link</td><td>ISR</td><td>Mensaje enviado; variables correctas; firma = onboarder</td></tr>
+<tr><td>2</td><td>Contactar hasta agendar (msg + llamada, ≤7 días)</td><td>Onboarder</td><td>Log en CM / doc seguimiento; fecha de sesión o cierre de plazo</td></tr>
+<tr><td>3</td><td>Encuadre en 1 frase (objetivo colaborativo)</td><td>Onboarder</td><td>Se oye en Diio primeros minutos</td></tr>
+<tr><td>4</td><td>Cubrir 4 temas en diálogo (sin anunciar encuesta)</td><td>Onboarder</td><td>En espejo se pueden resumir los 4 (o 3 + justificado)</td></tr>
+<tr><td>5</td><td>Espejo + priorización (~45 s)</td><td>Onboarder</td><td>Frase “si entendí bien… ¿priorizamos X?”</td></tr>
+<tr><td>6</td><td>Registrar propósito, dolor, contexto, operación, <strong>prioridad</strong></td><td>Onboarder</td><td>Texto en <strong>lista de tareas B2B3+ CM</strong></td></tr>
+<tr><td>7</td><td>Avanzar config SaaS en orden (según tiempo)</td><td>Onboarder</td><td>Cuenta refleja avance; pendiente planificado</td></tr>
+<tr><td>8</td><td>Agendar 2ª + tareas con responsable/fecha</td><td>Onboarder</td><td>Evento calendario + tareas CM</td></tr>
+<tr><td>9</td><td>Si ghosting: activar Contactabilidad antes de fin de semana 1</td><td>Onboarder → 2º asesor</td><td>Intervención registrada</td></tr>
+</table>
+
+<hr/>
+
+<h1>5. Criterio de éxito al cierre de la sesión</h1>
+
+<p>El cliente:</p>
+<ol><li><strong>Entiende</strong> lo que compró  </li><li>Tiene <strong>plan</strong> claro de onboarding a corto plazo  </li><li>Expuso <strong>necesidades priorizadas</strong>  </li><li>Ve <strong>cómo AgendaPro lo resuelve</strong> (conectado a su negocio)  </li><li>Tiene <strong>próximos pasos</strong> (2ª sesión + responsables)</li></ol>
+
+<p>La <strong>agenda matriz completa</strong> es deseable, no condición única de éxito. Si no alcanza: queda <strong>planificada</strong> (fecha, responsable, orden).</p>
+
+<hr/>
+
+<h1>6. Anatomía de la reunión (45–55 min; +10 multi-sede)</h1>
+
+<pre class="flow">
+A. Kickoff ~15 min  →  B. Config SaaS (resto)  →  C. Cierre 3–5 min
+
+</pre>
+
+<p><strong>Regla de oro:</strong> no sacrificar A ni C por config.  </p>
+<p><strong>Regla JR:</strong> no abrir POS+boletas.  </p>
+<p><strong>Anti-patrón:</strong> config profunda en los primeros ~10 min sin espejo.</p>
+
+<hr/>
+
+<section class="card" id="6-1-bloque-a-kickoff-15-min"><h2>6.1 Bloque A — Kickoff (~15 min)</h2>
+
+<h3>Encuadre (1–2 min)</h3>
+<p>Decir el objetivo en una frase colaborativa.  </p>
+<p>Ej.: <em>“Hoy quiero conocerte un poco y alinear cómo te ayudamos; la config la vemos según el tiempo y lo que prioricemos juntos.”</em></p>
+
+<p>Valor breve (ecosistema / marketplace) <strong>solo si aporta</strong> y en palabras del cliente — no monólogo.</p>
+
+<h3>Los 4 temas (mapa interno — no cuestionario)</h3>
+
+<table>
+<tr><th>#</th><th>Tema</th><th>Señal de cobertura</th></tr>
+<tr><td>1</td><td>Motivo / significado</td><td>Por qué el negocio y qué implica que le vaya bien</td></tr>
+<tr><td>2</td><td>Dolor / problema</td><td>Qué quiere resolver con AgendaPro (sus palabras)</td></tr>
+<tr><td>3</td><td>Antes</td><td>Qué probó y qué le incomodó</td></tr>
+<tr><td>4</td><td>Quién opera</td><td>Quién usa el sistema día a día además de quien está en la llamada</td></tr>
+</table>
+
+<p><strong>Bien:</strong> conversación fluida; una respuesta puede cubrir dos temas; completar con curiosidad.  </p>
+<p><strong>Mal:</strong> <em>“Te haré 4 preguntas…”</em> + enumerar 1–2–3–4.</p>
+
+<p>Ejemplos de apertura (no lista fija):  </p>
+<p><em>“Cuéntame de tu negocio…”</em> · <em>“¿Qué te hizo buscar AgendaPro?”</em> · <em>“¿Cómo agendaban hasta ahora?”</em> · <em>“¿Quién más va a vivir en la agenda día a día?”</em></p>
+
+<h3>Espejo (30–45 s) — ancla de estructura</h3>
+<p><em>“Si entendí bien… [motivo + dolor + antes + quién opera]. ¿Falta o corrijo algo? ¿Priorizamos [X] en lo que sigue?”</em></p>
+
+<h3>Registro obligatorio</h3>
+<p>En <strong>lista de tareas B2B3+ de Company Management</strong>:</p>
+<ul><li>propósito · dolor principal · contexto previo · operación diaria · <strong>prioridad acordada</strong></li></ul>
+
+<hr/>
+
+</section>
+<section class="card" id="6-2-bloque-b-configuraci-n-saas-tiempo-restante"><h2>6.2 Bloque B — Configuración SaaS (tiempo restante)</h2>
+
+<p>Encuadre técnico (1 min): se avanza lo que el tiempo permita; lo demás queda en el plan.</p>
+
+<table>
+<tr><th>Orden</th><th>Qué</th><th>Notas</th></tr>
+<tr><td>1</td><td>Sedes</td><td>Solo si hay &gt;1 local</td></tr>
+<tr><td>2</td><td>Profesionales</td><td>Activos; ligados a sede si aplica</td></tr>
+<tr><td>3</td><td>Horarios / reglas</td><td>Duraciones realistas; bloqueos si aplica</td></tr>
+<tr><td>4</td><td>Servicios / categorías</td><td>Máx. ~10 servicios esta sesión si hay tiempo; máx. 3 categorías</td></tr>
+<tr><td>5</td><td>Permisos / roles</td><td>Decisión explícita (tabla abajo)</td></tr>
+<tr><td>6</td><td>Link / reserva de prueba</td><td>No activar link público sin mínimos coherentes</td></tr>
+</table>
+
+<p><strong>Permisos (decisión explícita)</strong></p>
+
+<table>
+<tr><th>Rol</th><th>Ver agenda</th><th>Crear/editar reservas</th><th>Configuración</th></tr>
+<tr><td>Admin / dueño</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>Recepción / coord.</td><td>☐</td><td>☐</td><td>☐</td></tr>
+<tr><td>Profesional</td><td>☐</td><td>☐</td><td>☐</td></tr>
+</table>
+
+<p><em>Regla rápida:</em> profesional ve su agenda; recepción crea/edita; admin todo.</p>
+
+<p><strong>Hito deseable si hay tiempo:</strong> reserva de prueba end-to-end.</p>
+
+<hr/>
+
+</section>
+<section class="card" id="6-3-bloque-c-cierre-3-5-min"><h2>6.3 Bloque C — Cierre (3–5 min)</h2>
+
+<ul><li>Cumplir checklist de éxito (§5)  </li><li><strong>2ª sesión agendada</strong> (fecha) o 2 opciones concretas  </li><li>Tareas con responsable y fecha (tabla §8)  </li><li>Opcional: <em>“¿Qué quedó más claro y qué sigue confuso?”</em></li></ul>
+
+<hr/>
+
+</section>
+<h1>7. Antes / después de la reunión</h1>
+
+<h3>Antes (solo esto)</h3>
+<ul><li>☐ Decisor (o quien puede comprometer) en la llamada  </li><li>☐ Pantalla compartida posible  </li><li>☐ Acceso a cuenta + tareas B2B3+ CM abiertas  </li></ul>
+
+<h3>Después</h3>
+<ul><li>☐ Prioridad y notas en tareas B2B3+ CM  </li><li>☐ 2ª en calendario  </li><li>☐ Pendiente de config listado con fecha  </li></ul>
+
+<hr/>
+
+<h1>8. Continuidad — tareas típicas post-sesión</h1>
+
+<table>
+<tr><th>#</th><th>Tarea</th><th>Responsable</th><th>Fecha</th></tr>
+<tr><td>1</td><td>Completar / afinar catálogo de servicios</td><td></td><td></td></tr>
+<tr><td>2</td><td>Afinar horarios reales + bloqueos</td><td></td><td></td></tr>
+<tr><td>3</td><td>Política simple cancelación / reprogramación / seña (si aplica)</td><td></td><td></td></tr>
+</table>
+
+<hr/>
+
+<h1>9. Flujo pre-sesión: ISR + persistencia</h1>
+
+<section class="card" id="9-1-objetivo-de-proceso"><h2>9.1 Objetivo de proceso</h2>
+<p>Que el B2B3+ <strong>agende</strong> la sesión de configuración idealmente el mismo día del pago o el siguiente hábil.</p>
+
+</section>
+<section class="card" id="9-2-bienvenida-chatwoot-obligatorio"><h2>9.2 Bienvenida (Chatwoot — obligatorio)</h2>
+<ul><li>Sale desde <strong>línea WhatsApp de onboarding</strong> (sin grupo).  </li><li>Template firma como <strong>onboarder asignado</strong> (<code>{{ agent.name }}</code>).  </li><li>ISR dispara y completa variables; no firma con su nombre.  </li><li><strong>No</strong> pedir sedes/servicios/horarios/roles por WA antes de la reunión.</li></ul>
+
+</section>
+<section class="card" id="9-3-persistencia-onboarder-m-x-1-semana"><h2>9.3 Persistencia (onboarder) — máx. 1 semana</h2>
+<p>Contactos diarios alternando mensaje y llamada. Un pedido claro por contacto.  </p>
+<p>Salida respetuosa: <em>“Si esta semana no pueden, indiquen qué día les funciona.”</em></p>
+
+</section>
+<section class="card" id="9-4-control-cruzado-anti-ghosting"><h2>9.4 Control cruzado (anti-ghosting)</h2>
+<p>Si no responde: segundo asesor como <strong>Área de Contactabilidad</strong> (validar canal + urgencia + agendar). Registrar en CM / doc compartido.</p>
+
+<hr/>
+
+</section>
+<h1>10. Situaciones especiales (si → entonces)</h1>
+
+<table>
+<tr><th>Si…</th><th>Entonces…</th></tr>
+<tr><td>Cliente apurado / “vamos directo al sistema”</td><td>8–10 min a 4 temas + espejo; config solo lo esencial; resto a 2ª</td></tr>
+<tr><td>Uso avanzado previo</td><td>Priorizar orden/corrección (duplicados, fantasma, categorías) antes de sumar</td></tr>
+<tr><td>Solo recepción en la call</td><td>Simplificar temas; acordar quién completa tareas entre sesiones</td></tr>
+<tr><td>Negocio 1–3 personas</td><td>Permisos + servicios top + horario base; menos carga cognitiva</td></tr>
+<tr><td>Multi-sede / muchos profesionales</td><td>+10 min; no sacrificar espejo ni cierre</td></tr>
+<tr><td>Cuenta con POS+boletas y el onboarder es JR</td><td><strong>No</strong> tomar ese caso en rampa inicial; derivar según política TL</td></tr>
+</table>
+
+<hr/>
+
+<h1>11. Plantillas al cliente</h1>
+
+<h3>11.1 Bienvenida (ISR → línea onboarding)</h3>
+
+<p>&quot;¡Hola {{ contact.first_name }}! Te damos la bienvenida a AgendaPro. Tu cuenta ya está activa; para acceder andá a <strong>www.agendapro.com</strong>, seleccioná <strong>Ir a mi cuenta</strong> e ingresá con tu usuario y contraseña.</p>
+
+<p>Soy {{ agent.name }}, tu ejecutivo/a de implementación. Este chat será nuestro canal. Te acompaño para que puedas usar AgendaPro y sacarle provecho a tu plan.</p>
+
+<p>Para comenzar, <strong>agendá nuestra sesión de configuración inicial</strong> en este link: <strong>[INSERTAR_LINK_AQUÍ]</strong></p>
+
+<p>¡Quedo atento/a a tu confirmación!&quot;</p>
+
+<h3>11.2 Contactabilidad — llamada</h3>
+<p>&quot;Hola {{ contact.first_name }}, te habla [Nombre] del Área de Contactabilidad de AgendaPro. Te contacto porque tu cuenta B2B ya está activa, pero aún no concretamos tu sesión de setup con tu asesor. ¿Tuviste algún inconveniente con el link o preferís que busquemos un horario ahora?&quot;</p>
+
+<h3>11.3 Contactabilidad — WhatsApp</h3>
+<p>&quot;Hola {{ contact.first_name }}, te saluda [Nombre] de Contactabilidad AgendaPro. Vimos tu implementación en pausa. ¿El link de agendamiento te funcionó o preferís que te asigne un espacio para la sesión de configuración?&quot;</p>
+
+<hr/>
+
+<h1>12. Playbook 1 página (imprimible / Lab)</h1>
+
+<p><strong>Tiempo:</strong> ~15 min kickoff + resto config + 3–5 cierre (+10 multi-sede)</p>
+
+<p><strong>Antes:</strong> acceso · decisor · pantalla · tareas B2B3 CM abiertas  </p>
+
+<p><strong>A.</strong> Encuadre → 4 temas (diálogo) → espejo → registro CM  </p>
+<p><strong>B.</strong> Sedes → prof → horarios → servicios → permisos → link/prueba si da  </p>
+<p><strong>C.</strong> Éxito 5 pilares · 2ª agendada · tareas con fecha  </p>
+
+<p><strong>Sí verde:</strong> espejo con prioridad humana · notas en CM · 2ª fecha  </p>
+<p><strong>Rojo:</strong> encuesta “4 preguntas” · config en primeros ~10 min sin espejo · JR en POS+boletas  </p>
+
+<hr/>
+
+<h1>13. Ejemplos de calibración (usar en Lab / shadow)</h1>
+
+<h3>Dorado (patrón a replicar)</h3>
+<p>Encuadre colaborativo → cliente habla del negocio y del dolor → ejecutivo completa “antes” y “quién opera” con curiosidad → espejo con prioridad explícita → escribe prioridad en tarea B2B3 CM → avanza 2–3 piezas de config alineadas a esa prioridad → agenda 2ª.</p>
+
+<h3>Rojo (no replicar)</h3>
+<p>Saludo breve → “vamos a configurar servicios” → 25 min en catálogo → sin espejo → sin prioridad en CM → “cualquier duda me escribes” sin 2ª fecha.  </p>
+<p>O: <em>“Te haré cuatro preguntas: una… dos… tres…”</em> (suena a encuesta).</p>
+
+<p><em>(Opcional: pegar aquí IDs Diio anonimizados del equipo cuando existan clips pactados.)</em></p>
+
+<hr/>
+
+<h1>14. Checklist de comunicación asertiva</h1>
+
+<table>
+<tr><th>Hacer</th><th>Evitar</th></tr>
+<tr><td>Objetivo de la reunión en una frase</td><td>Jerga interna</td></tr>
+<tr><td>Pedir permiso para <strong>pantalla</strong></td><td>Anunciar “cuestionario de 4 preguntas”</td></tr>
+<tr><td>Explicar que lo acordado queda en el seguimiento del equipo (CM)</td><td>Presión moral / culpa</td></tr>
+<tr><td>2 opciones concretas si no pueden hoy</td><td>Mensajes largos sin un solo pedido</td></tr>
+<tr><td>Cerrar con resumen + “¿Tiene sentido?”</td><td>Colgar sin próxima fecha</td></tr>
+</table>
+
+<hr/>
+
+<h1>15. Historial</h1>
+
+<table>
+<tr><th>Versión</th><th>Cambio</th></tr>
+<tr><td><strong>2.0</strong></td><td>Canónico unificado. Notas → tareas B2B3+ CM. 4 temas = mapa interno (no anunciar). JR sin POS+boletas. Portada holística, RACI, acción×evidencia, si→entonces, ejemplos dorado/rojo. Elimina HubSpot como registro de kickoff.</td></tr>
+<tr><td>1.x</td><td>Paquete manual + procedimiento (ISR Chatwoot, sin checklist previo WA, kickoff 15 min, éxito consultivo).</td></tr>
+</table>
+
+<hr/>
+
+<p><em>AgendaPro · Blueprint Onboarding B2B v2.0 · Enablement / CX · Uso interno</em></p>
+  <footer>AgendaPro · Blueprint Onboarding B2B v2.0 · Uso interno</footer>
+</main>
+<script>
+(function(){
+  var KEY='kickoff-tl';
+  var gate=document.getElementById('gate');
+  var app=document.getElementById('app');
+  var input=document.getElementById('gate-input');
+  var err=document.getElementById('gate-err');
+  function unlock(){sessionStorage.setItem('ap_blueprint_v2_ok','1');gate.classList.add('hidden');app.hidden=false;}
+  function tryUnlock(){
+    if((input.value||'').trim().toLowerCase()===KEY) unlock();
+    else {err.textContent='Clave incorrecta';input.focus();}
+  }
+  if(sessionStorage.getItem('ap_blueprint_v2_ok')==='1') unlock();
+  document.getElementById('gate-btn').onclick=tryUnlock;
+  input.addEventListener('keydown',function(e){if(e.key==='Enter')tryUnlock();});
+})();
+</script>
+</body>
+</html>
