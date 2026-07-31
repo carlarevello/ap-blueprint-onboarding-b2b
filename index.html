@@ -1,413 +1,250 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>Blueprint Onboarding B2B v2 · AgendaPro</title>
-<link rel="preconnect" href="https://api.fontshare.com"/>
+<html lang="es"><head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Blueprint R1 Solo SaaS v2.1</title>
 <link href="https://api.fontshare.com/v2/css?f[]=clash-display@300,400,500,600&display=swap" rel="stylesheet"/>
 <style>
-:root {
-  --navy:#1D1D3D; --navy-mid:#7A7DA4; --morado:#812DF2; --morado-pale:#EEE2FF;
-  --naranja:#FF7A59; --gris:#F5F5F5; --gris-mid:#A8A8A8; --line:#E4E4EC;
-}
+:root{--navy:#1D1D3D;--navy-mid:#7A7DA4;--morado:#812DF2;--morado-pale:#EEE2FF;--naranja:#FF7A59;--gris:#F5F5F5;--gris-mid:#A8A8A8;--line:#E4E4EC;--warn:#9A3412;--warn-bg:#FFF0EB}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Clash Display',system-ui,sans-serif;background:var(--gris);color:var(--navy);line-height:1.45}
-#gate{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;
-  background:linear-gradient(145deg,#1D1D3D 0%,#3a2a6a 55%,#812DF2 120%);padding:1.5rem}
+#gate{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#1D1D3D,#3a2a6a 55%,#812DF2);padding:1.5rem}
 #gate.hidden{display:none}
-.gate-card{background:#fff;border-radius:12px;padding:2rem 1.75rem;max-width:400px;width:100%;
-  box-shadow:0 20px 50px rgba(0,0,0,.25)}
-.gate-card h1{font-size:1.25rem;font-weight:600;margin-bottom:.35rem}
-.gate-card p{font-size:.9rem;color:var(--navy-mid);font-weight:300;margin-bottom:1.1rem}
-.gate-card input{width:100%;padding:.7rem .85rem;border:1px solid var(--line);border-radius:8px;font:inherit;margin-bottom:.75rem}
+.gate-card{background:#fff;border-radius:12px;padding:2rem;max-width:400px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.25)}
+.gate-card h1{font-size:1.2rem;font-weight:600;margin-bottom:.35rem}
+.gate-card p{font-size:.9rem;color:var(--navy-mid);font-weight:300;margin-bottom:1rem}
+.gate-card input{width:100%;padding:.7rem;border:1px solid var(--line);border-radius:8px;font:inherit;margin-bottom:.75rem}
 .gate-card button{width:100%;padding:.75rem;border:0;border-radius:8px;background:var(--morado);color:#fff;font:inherit;font-weight:500;cursor:pointer}
 .gate-card .err{color:var(--naranja);font-size:.8rem;min-height:1.2em}
-.gate-card .fine{font-size:.72rem;color:var(--gris-mid);margin-top:.85rem}
 .page{max-width:880px;margin:0 auto;padding:2rem 1.25rem 4rem}
-.badge{display:inline-block;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--naranja);background:#FFF0EB;padding:.35rem .7rem;border-radius:4px;margin-bottom:.85rem}
-h1{font-size:clamp(1.4rem,3vw,1.85rem);font-weight:600;letter-spacing:-.02em;margin:1rem 0 .5rem}
+.badge{display:inline-block;font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--naranja);background:#FFF0EB;padding:.35rem .7rem;border-radius:4px;margin-bottom:.85rem}
+.nav{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1rem;font-size:.85rem}
+.nav a{color:var(--morado);font-weight:500;text-decoration:none}
+h1{font-size:clamp(1.35rem,3vw,1.8rem);font-weight:600;margin:1rem 0 .5rem}
 .card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:1.2rem 1.3rem;margin:1rem 0}
 .card h2{font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--morado);margin-bottom:.65rem}
 h3{font-size:1rem;font-weight:560;margin:1rem 0 .45rem}
 p,li{font-size:.92rem;font-weight:300;margin:.35rem 0}
-ul,ol{padding-left:1.2rem;margin:.4rem 0}
+ul,ol{padding-left:1.2rem}
 table{width:100%;border-collapse:collapse;margin:.6rem 0;font-size:.84rem}
 th,td{border-bottom:1px solid var(--line);padding:.5rem .35rem;text-align:left;vertical-align:top;font-weight:300}
 th{font-weight:500;font-size:.7rem;letter-spacing:.05em;text-transform:uppercase;color:var(--navy-mid)}
-pre.flow{font-family:ui-monospace,Menlo,monospace;font-size:.75rem;background:var(--morado-pale);
-  padding:.85rem 1rem;border-radius:8px;margin:.75rem 0;white-space:pre-wrap;line-height:1.55}
+pre.flow{font-family:ui-monospace,Menlo,monospace;font-size:.75rem;background:var(--morado-pale);padding:.85rem 1rem;border-radius:8px;margin:.75rem 0;white-space:pre-wrap}
 code{font-family:ui-monospace,Menlo,monospace;font-size:.85em;background:#f0f0f5;padding:.05em .3em;border-radius:4px}
-hr{border:0;border-top:1px solid var(--line);margin:1.25rem 0}
-footer{margin-top:1.5rem;font-size:.75rem;color:var(--gris-mid);font-weight:300}
-@media print{#gate{display:none!important} body{background:#fff}}
-</style>
-</head>
-<body>
-<div id="gate">
-  <div class="gate-card">
-    <h1>Blueprint Onboarding B2B</h1>
-    <p>Versión 2.0 canónica · Uso interno AgendaPro</p>
-    <div class="err" id="gate-err"></div>
-    <input id="gate-input" type="password" placeholder="Clave interna" autocomplete="off"/>
-    <button type="button" id="gate-btn">Entrar</button>
-    <p class="fine">Clave del equipo · no es autenticación corporativa</p>
-  </div>
-</div>
+.callout.warn{background:var(--warn-bg);color:var(--warn);border-radius:8px;padding:.75rem .9rem;margin:.75rem 0;font-size:.9rem;font-weight:300}
+a{color:var(--morado)}
+footer{margin-top:1.5rem;font-size:.75rem;color:var(--gris-mid)}
+</style></head><body>
+<div id="gate"><div class="gate-card"><h1>Blueprint R1 Solo SaaS v2.1</h1>
+<p>Uso interno AgendaPro · Enablement</p><div class="err" id="gate-err"></div>
+<input id="gate-input" type="password" placeholder="Clave interna" autocomplete="off"/>
+<button type="button" id="gate-btn">Entrar</button></div></div>
 <main class="page" id="app" hidden>
-  <div class="badge">Enablement · Canónico v2.0</div>
-<h1>AgendaPro — Blueprint Onboarding B2B (Kickoff + setup inicial)</h1>
+<div class="badge">Track A · Solo SaaS · Canónico</div>
+<nav class="nav">
+<a href="./">Track A · Solo SaaS</a>
+<a href="./track-b-saas-pos-fe.html">Track B · SaaS+POS/FE</a>
+</nav>
+<h1>Blueprint R1 — Solo SaaS (Onboarding B2B)</h1>
 
-<p><strong>Versión:</strong> 2.0 · <strong>Canónico</strong> · Uso interno  </p>
-<p><strong>Segmento:</strong> B2B3+ · <strong>Canal sesión:</strong> Meet/Zoom + pantalla compartida  </p>
-<p><strong>Registro de notas del kickoff:</strong> lista de tareas <strong>B2B3+ en Company Management</strong> (no HubSpot)  </p>
-<p><strong>Complemento TL (rampa / shadow):</strong> <code>Documents/Brief-TL-Blueprint-Kickoff-B2B.md</code></p>
+<p><strong>Versión:</strong> 2.1 · <strong>Track A</strong> · Canónico · Uso interno  </p>
+<p><strong>Público:</strong> Owners / onboarders que ejecutan <strong>Asesoría 1 (R1) de cuentas Solo SaaS</strong>  </p>
+<p><strong>No usar</strong> si el comercio contrató <strong>POS y/o FE (boletas)</strong> → ver <strong>Track B</strong>: <code>AgendaPro-Blueprint-R1-SaaS-POS-FE.md</code></p>
 
-<p>Este documento es la <strong>única fuente de verdad</strong> del estándar de primera sesión. Si otro material contradice este paquete, manda la v2.0.</p>
+<p><strong>Traspaso comercial (fuente):</strong> <a href="https://app.notion.com/p/375ab34c233b8182b234dbca53ebb1f7">Proceso de Traspaso Comercial → Onboarding (todo LATAM)</a>  </p>
+<p><strong>Complemento TL / shadow SaaS:</strong> <code>Documents/Brief-TL-Blueprint-Kickoff-B2B.md</code></p>
+
+<div class="callout warn"><strong>Regla de oro:</strong> no mezclar este Blueprint con el de POS/FE. Son <strong>públicos, procesos y criterios de éxito distintos</strong>.</div>
 
 <hr/>
 
-<h1>0. Portada holística (1 página)</h1>
+<h1>0. Cómo saber si aplica este Blueprint</h1>
 
-<section class="card" id="problema-que-resuelve"><h2>Problema que resuelve</h2>
-<p>Cumplir hitos de onboarding <strong>sin</strong> que el cliente entienda qué compró ni qué priorizar genera <strong>no-uso</strong> y churn temprano. El kickoff técnico-first (config / POS antes de escuchar) acelera ese riesgo.</p>
+<table>
+<tr><th>Etiquetas / venta</th><th>Track</th><th>Documento</th></tr>
+<tr><td>Solo plan <strong>SaaS</strong> (sin POS, sin FE)</td><td><strong>A — Solo SaaS</strong></td><td><strong>Este documento</strong></td></tr>
+<tr><td>SaaS + <strong>POS</strong> y/o <strong>FE</strong> (boletas)</td><td><strong>B — SaaS+POS/FE</strong></td><td><code>AgendaPro-Blueprint-R1-SaaS-POS-FE.md</code></td></tr>
+<tr><td>POS sin inicio de actividades SII (<code>sin SII</code>)</td><td><strong>B</strong></td><td>Track B (configuración POS en espera)</td></tr>
+</table>
+
+<p>Si hay duda: mirar nota anclada HubSpot + etiquetas Chatwoot / descripción grupo WA (POS, FE, SaaS, Latestar, sin SII).</p>
+
+<hr/>
+
+<h1>1. Portada holística (Track A)</h1>
+
+<section class="card" id="problema"><h2>Problema</h2>
+<p>Cumplir hitos sin que el cliente entienda qué compró ni qué priorizar → <strong>no-uso</strong> y churn temprano en cuentas SaaS.</p>
 
 </section>
-<section class="card" id="resultado-que-buscamos"><h2>Resultado que buscamos</h2>
-<p>Cliente con <strong>claridad + vínculo + plan</strong> en la 1ª sesión; config SaaS avanzada según tiempo; <strong>2ª sesión agendada</strong>; prioridad escrita en <strong>tareas B2B3+ CM</strong>.</p>
+<section class="card" id="resultado"><h2>Resultado</h2>
+<p>En la <strong>R1 (45 min)</strong> el Owner hace el <strong>kickoff consultivo</strong> + avanza config SaaS según tiempo; deja prioridad en <strong>tareas B2B3+ CM</strong>; agenda <strong>2ª sesión</strong>.</p>
 
 </section>
-<section class="card" id="de-pago-a-2-sesi-n"><h2>De pago a 2ª sesión</h2>
+<section class="card" id="de-pago-a-r1-alineado-a-traspaso-notion"><h2>De pago a R1 (alineado a traspaso Notion)</h2>
 
 <pre class="flow">
-Pago / traspaso ventas
+Cliente paga
 
-  → ISR: bienvenida Chatwoot (firma {{ agent.name }}) + link agendar
+  → ISR: WhatsApp bienvenida (credenciales + datos Owner + ofrece horarios)
 
-  → Onboarder: persistencia hasta agendar (≤7 días)
+       + nota anclada HubSpot (checklist venta) — SIN formulario POS/FE
 
-  → Sesión 45–55 min (+10 multi-sede)
+  → ISR: agenda R1 en calendario del Owner (NO entrega el link al cliente)
 
-       Bloque A ~15 min: encuadre → 4 temas (diálogo) → espejo → tareas B2B3 CM
+       Evento = &quot;Asesoría 1&quot; + ID comercio · SLA máx. 48 h hábiles
 
-       Bloque B: config SaaS según tiempo
+  → ISR: crea canal (Chatwoot o grupo WA según país) + pase + nota privada
 
-       Bloque C: cierre + 2ª sesión
+  → Owner confirma recepción
 
-  → Continuidad onboarding (plan priorizado)
+  → R1 (Owner): kickoff SaaS (este Blueprint) + config + cierre
 
 </pre>
 
 </section>
-<section class="card" id="se-ales-de-proceso-leading-no-reemplazan-okr-de-gerencia"><h2>Señales de proceso (leading — no reemplazan OKR de gerencia)</h2>
+<section class="card" id="se-ales-de-proceso-leading"><h2>Señales de proceso (leading)</h2>
 <table>
-<tr><th>Señal</th><th>Dónde se ve</th></tr>
-<tr><td>4 temas + espejo en 1ª</td><td>Diio / observación TL</td></tr>
+<tr><th>Señal</th><th>Dónde</th></tr>
+<tr><td>4 temas + espejo en R1</td><td>Diio</td></tr>
 <tr><td>Prioridad en tareas B2B3+ CM</td><td>Company Management</td></tr>
-<tr><td>2ª sesión agendada en la 1ª call</td><td>Calendario</td></tr>
-<tr><td>Sin config profunda en primeros ~10 min sin espejo</td><td>Diio</td></tr>
+<tr><td>2ª sesión agendada</td><td>Calendario</td></tr>
+<tr><td>Sin config profunda en ~10 min sin espejo</td><td>Diio</td></tr>
 </table>
 
 <hr/>
 
 </section>
-<h1>1. Claridad: qué es / qué no es</h1>
+<h1>2. In / out of scope (Track A)</h1>
 
 <table>
-<tr><th>Es</th><th>No es</th></tr>
-<tr><td>Estándar de <strong>1ª sesión SaaS</strong> (kickoff consultivo + setup)</td><td>Capacitación POS + boletas</td></tr>
-<tr><td>Mapa de <strong>escucha</strong> (4 temas) + espejo</td><td>Cuestionario anunciado al cliente</td></tr>
-<tr><td>Criterio de éxito <strong>consultivo</strong></td><td>“Agenda matriz 100% terminada” como único éxito</td></tr>
-<tr><td>Registro en <strong>tareas B2B3+ CM</strong></td><td>Notas solo en HubSpot / chat suelto</td></tr>
+<tr><th>In</th><th>Out</th></tr>
+<tr><td>R1 Solo SaaS (45 min)</td><td>R1 con POS/FE (usar Track B)</td></tr>
+<tr><td>Kickoff consultivo (4 temas + espejo)</td><td>Formulario POS/FE</td></tr>
+<tr><td>Config SaaS (sedes→…→link/prueba)</td><td>Solicitud de máquina, Tready, e-Boletas, SII</td></tr>
+<tr><td>Registro en tareas B2B3+ CM</td><td>Tratar HubSpot como ficha de kickoff (HubSpot = venta/trazabilidad ISR)</td></tr>
+<tr><td>Canal Chatwoot o WA según país (post-traspaso)</td><td>Inventar otro canal</td></tr>
 </table>
 
-<h3>Out of scope (esta reunión / esta rampa JR)</h3>
-<ul><li>POS, boletas, máquina, iPad, formularios SII  </li><li>Checklist previo por WhatsApp (sedes/servicios/horarios)  </li><li>Grupo de WhatsApp con el cliente  </li><li>JR en cola POS+boletas al inicio de rampa  </li></ul>
-
-<h3>In scope</h3>
-<ul><li>Encuadre, 4 temas, espejo, registro CM, config SaaS (sedes→…→link/prueba si da), cierre con 2ª sesión, persistencia pre-agenda</li></ul>
+<p><strong>JR / altas nuevas:</strong> este Track A es su rampa. <strong>No</strong> recibir Track B hasta OK del TL.</p>
 
 <hr/>
 
-<h1>2. Competencias previas (para poder replicar)</h1>
-<p>Quien ejecuta debe tener acceso a:</p>
-<ul><li>Company Management (journey / lista de tareas B2B3+)  </li><li>Chatwoot línea onboarding (o continuidad del hilo)  </li><li>Calendario de agendamiento del onboarder  </li><li>Diio (grabación / revisión)  </li><li>Cuenta del cliente (personificación / pantalla compartida según política)</li></ul>
-
-<hr/>
-
-<h1>3. RACI (quién hace qué)</h1>
+<h1>3. Roles (traspaso + R1 SaaS)</h1>
 
 <table>
-<tr><th>Paso</th><th>ISR</th><th>Onboarder</th><th>TL</th><th>Contactabilidad (2º asesor)</th></tr>
-<tr><td>Bienvenida + credenciales + link</td><td><strong>R</strong></td><td>C (firma en template)</td><td>I</td><td>—</td></tr>
-<tr><td>Persistencia hasta agendar</td><td>I</td><td><strong>R</strong></td><td>A (calidad/volumen)</td><td>—</td></tr>
-<tr><td>Kickoff + espejo + tareas B2B3 CM</td><td>—</td><td><strong>R</strong></td><td>C (shadow/calibración)</td><td>—</td></tr>
-<tr><td>Config SaaS en vivo</td><td>—</td><td><strong>R</strong></td><td>C</td><td>—</td></tr>
-<tr><td>Agendar 2ª sesión</td><td>—</td><td><strong>R</strong></td><td>I</td><td>—</td></tr>
-<tr><td>Control cruzado anti-ghosting</td><td>—</td><td>C (sigue dueño)</td><td>A</td><td><strong>R</strong> (intervención)</td></tr>
+<tr><th>Rol</th><th>Responsabilidad clave</th></tr>
+<tr><td><strong>ISR</strong></td><td>Bienvenida WA; agenda R1 en calendario Owner; crea Chatwoot/WA; pase; nota HubSpot. <strong>No</strong> envía formulario POS/FE (no aplica).</td></tr>
+<tr><td><strong>Owner</strong></td><td>2 bloques R1/día reservados; ejecuta R1 con este Blueprint; reprograma no-shows; insiste si quedó ilocalizable post-48h.</td></tr>
+<tr><td><strong>TL Onboarding</strong></td><td>Apoya agendamiento si no hay cupo / no acomoda (escalamiento traspaso).</td></tr>
+<tr><td><strong>Enablement</strong></td><td>Calibra calidad del kickoff SaaS (no gestiona cartera).</td></tr>
 </table>
 
-<p>R = responsable · A = accountable · C = consultado · I = informado</p>
+<p>Detalle completo del traspaso: Notion citado arriba. Este Blueprint <strong>no reemplaza</strong> ese proceso; lo <strong>consume</strong> en la R1.</p>
 
 <hr/>
 
-<h1>4. Acción × dueño × evidencia</h1>
+<h1>4. Acción × dueño × evidencia (Track A)</h1>
 
 <table>
-<tr><th>#</th><th>Acción concreta</th><th>Dueño</th><th>Evidencia de “hecho”</th></tr>
-<tr><td>1</td><td>Enviar bienvenida Chatwoot con credenciales + link</td><td>ISR</td><td>Mensaje enviado; variables correctas; firma = onboarder</td></tr>
-<tr><td>2</td><td>Contactar hasta agendar (msg + llamada, ≤7 días)</td><td>Onboarder</td><td>Log en CM / doc seguimiento; fecha de sesión o cierre de plazo</td></tr>
-<tr><td>3</td><td>Encuadre en 1 frase (objetivo colaborativo)</td><td>Onboarder</td><td>Se oye en Diio primeros minutos</td></tr>
-<tr><td>4</td><td>Cubrir 4 temas en diálogo (sin anunciar encuesta)</td><td>Onboarder</td><td>En espejo se pueden resumir los 4 (o 3 + justificado)</td></tr>
-<tr><td>5</td><td>Espejo + priorización (~45 s)</td><td>Onboarder</td><td>Frase “si entendí bien… ¿priorizamos X?”</td></tr>
-<tr><td>6</td><td>Registrar propósito, dolor, contexto, operación, <strong>prioridad</strong></td><td>Onboarder</td><td>Texto en <strong>lista de tareas B2B3+ CM</strong></td></tr>
-<tr><td>7</td><td>Avanzar config SaaS en orden (según tiempo)</td><td>Onboarder</td><td>Cuenta refleja avance; pendiente planificado</td></tr>
-<tr><td>8</td><td>Agendar 2ª + tareas con responsable/fecha</td><td>Onboarder</td><td>Evento calendario + tareas CM</td></tr>
-<tr><td>9</td><td>Si ghosting: activar Contactabilidad antes de fin de semana 1</td><td>Onboarder → 2º asesor</td><td>Intervención registrada</td></tr>
+<tr><th>#</th><th>Acción</th><th>Dueño</th><th>Evidencia</th></tr>
+<tr><td>1</td><td>Bienvenida WA + credenciales + datos Owner + horarios</td><td>ISR</td><td>Mensaje enviado</td></tr>
+<tr><td>2</td><td>Nota anclada HubSpot (qué se vendió = Solo SaaS)</td><td>ISR</td><td>Nota / checklist</td></tr>
+<tr><td>3</td><td>Agendar R1 (Asesoría 1 + ID) en calendario Owner</td><td>ISR</td><td>Evento calendario</td></tr>
+<tr><td>4</td><td>Crear Chatwoot o grupo WA + etiquetas <strong>SaaS</strong> + pase</td><td>ISR</td><td>Canal asignado a Owner</td></tr>
+<tr><td>5</td><td>Confirmar recepción del caso</td><td>Owner</td><td>Ack interno</td></tr>
+<tr><td>6</td><td>R1: encuadre + 4 temas (diálogo) + espejo</td><td>Owner</td><td>Diio</td></tr>
+<tr><td>7</td><td>Registrar prioridad en tareas B2B3+ CM</td><td>Owner</td><td>CM</td></tr>
+<tr><td>8</td><td>Config SaaS según tiempo + 2ª agendada</td><td>Owner</td><td>Cuenta + calendario</td></tr>
 </table>
 
 <hr/>
 
-<h1>5. Criterio de éxito al cierre de la sesión</h1>
+<h1>5. Criterio de éxito al cierre de R1 (Solo SaaS)</h1>
 
-<p>El cliente:</p>
-<ol><li><strong>Entiende</strong> lo que compró  </li><li>Tiene <strong>plan</strong> claro de onboarding a corto plazo  </li><li>Expuso <strong>necesidades priorizadas</strong>  </li><li>Ve <strong>cómo AgendaPro lo resuelve</strong> (conectado a su negocio)  </li><li>Tiene <strong>próximos pasos</strong> (2ª sesión + responsables)</li></ol>
+<ol><li>Entiende lo que compró (plan SaaS)  </li><li>Plan de onboarding a corto plazo  </li><li>Necesidades priorizadas  </li><li>Cómo AgendaPro lo resuelve (en sus palabras)  </li><li>Próximos pasos + <strong>2ª sesión agendada</strong></li></ol>
 
-<p>La <strong>agenda matriz completa</strong> es deseable, no condición única de éxito. Si no alcanza: queda <strong>planificada</strong> (fecha, responsable, orden).</p>
+<p>Agenda matriz completa = <strong>deseable</strong>, no única condición de éxito.</p>
 
 <hr/>
 
-<h1>6. Anatomía de la reunión (45–55 min; +10 multi-sede)</h1>
+<h1>6. Anatomía R1 Solo SaaS (45 min; +10 multi-sede)</h1>
 
 <pre class="flow">
-A. Kickoff ~15 min  →  B. Config SaaS (resto)  →  C. Cierre 3–5 min
+A. Kickoff ~15 min → B. Config SaaS (resto) → C. Cierre 3–5 min
 
 </pre>
 
-<p><strong>Regla de oro:</strong> no sacrificar A ni C por config.  </p>
-<p><strong>Regla JR:</strong> no abrir POS+boletas.  </p>
-<p><strong>Anti-patrón:</strong> config profunda en los primeros ~10 min sin espejo.</p>
+<p><strong>Kickoff lo realiza el Owner en la Asesoría 1</strong> (callout Notion).</p>
+
+<h3>6.1 Bloque A — Kickoff</h3>
+<p><strong>Encuadre:</strong> objetivo colaborativo en 1 frase.  </p>
+<p><strong>4 temas (mapa interno — no anunciar cuestionario):</strong> motivo · dolor · antes · quién opera.  </p>
+<p><strong>Espejo (~45 s):</strong> <em>“Si entendí bien… ¿priorizamos X?”</em>  </p>
+<p><strong>Registro:</strong> lista de tareas <strong>B2B3+ Company Management</strong> (propósito, dolor, contexto, operación, prioridad).</p>
+
+<h3>6.2 Bloque B — Config SaaS</h3>
+<p>Orden: sedes → profesionales → horarios → servicios → permisos → link / prueba si da.</p>
+
+<h3>6.3 Bloque C — Cierre</h3>
+<p>Éxito 5 pilares · 2ª sesión · tareas con responsable/fecha.</p>
+
+<p><strong>Rojo:</strong> enumerar “4 preguntas” · config en ~10 min sin espejo · abrir POS/boletas en Track A.</p>
 
 <hr/>
 
-<section class="card" id="6-1-bloque-a-kickoff-15-min"><h2>6.1 Bloque A — Kickoff (~15 min)</h2>
+<h1>7. Persistencia post-traspaso (si R1 no ocurrió aún)</h1>
 
-<h3>Encuadre (1–2 min)</h3>
-<p>Decir el objetivo en una frase colaborativa.  </p>
-<p>Ej.: <em>“Hoy quiero conocerte un poco y alinear cómo te ayudamos; la config la vemos según el tiempo y lo que prioricemos juntos.”</em></p>
-
-<p>Valor breve (ecosistema / marketplace) <strong>solo si aporta</strong> y en palabras del cliente — no monólogo.</p>
-
-<h3>Los 4 temas (mapa interno — no cuestionario)</h3>
-
-<table>
-<tr><th>#</th><th>Tema</th><th>Señal de cobertura</th></tr>
-<tr><td>1</td><td>Motivo / significado</td><td>Por qué el negocio y qué implica que le vaya bien</td></tr>
-<tr><td>2</td><td>Dolor / problema</td><td>Qué quiere resolver con AgendaPro (sus palabras)</td></tr>
-<tr><td>3</td><td>Antes</td><td>Qué probó y qué le incomodó</td></tr>
-<tr><td>4</td><td>Quién opera</td><td>Quién usa el sistema día a día además de quien está en la llamada</td></tr>
-</table>
-
-<p><strong>Bien:</strong> conversación fluida; una respuesta puede cubrir dos temas; completar con curiosidad.  </p>
-<p><strong>Mal:</strong> <em>“Te haré 4 preguntas…”</em> + enumerar 1–2–3–4.</p>
-
-<p>Ejemplos de apertura (no lista fija):  </p>
-<p><em>“Cuéntame de tu negocio…”</em> · <em>“¿Qué te hizo buscar AgendaPro?”</em> · <em>“¿Cómo agendaban hasta ahora?”</em> · <em>“¿Quién más va a vivir en la agenda día a día?”</em></p>
-
-<h3>Espejo (30–45 s) — ancla de estructura</h3>
-<p><em>“Si entendí bien… [motivo + dolor + antes + quién opera]. ¿Falta o corrijo algo? ¿Priorizamos [X] en lo que sigue?”</em></p>
-
-<h3>Registro obligatorio</h3>
-<p>En <strong>lista de tareas B2B3+ de Company Management</strong>:</p>
-<ul><li>propósito · dolor principal · contexto previo · operación diaria · <strong>prioridad acordada</strong></li></ul>
+<p>Según Notion:</p>
+<ul><li>Si cliente <strong>ilocalizable</strong> y ya pasaron 48 h: canal creado → <strong>Owner insiste</strong>.  </li><li>Si <strong>no asiste</strong> a R1 agendada: <strong>reprograma el Owner</strong>.  </li><li>Intentos ISR quedan en <strong>HubSpot</strong> (trazabilidad comercial).</li></ul>
 
 <hr/>
 
-</section>
-<section class="card" id="6-2-bloque-b-configuraci-n-saas-tiempo-restante"><h2>6.2 Bloque B — Configuración SaaS (tiempo restante)</h2>
-
-<p>Encuadre técnico (1 min): se avanza lo que el tiempo permita; lo demás queda en el plan.</p>
-
-<table>
-<tr><th>Orden</th><th>Qué</th><th>Notas</th></tr>
-<tr><td>1</td><td>Sedes</td><td>Solo si hay &gt;1 local</td></tr>
-<tr><td>2</td><td>Profesionales</td><td>Activos; ligados a sede si aplica</td></tr>
-<tr><td>3</td><td>Horarios / reglas</td><td>Duraciones realistas; bloqueos si aplica</td></tr>
-<tr><td>4</td><td>Servicios / categorías</td><td>Máx. ~10 servicios esta sesión si hay tiempo; máx. 3 categorías</td></tr>
-<tr><td>5</td><td>Permisos / roles</td><td>Decisión explícita (tabla abajo)</td></tr>
-<tr><td>6</td><td>Link / reserva de prueba</td><td>No activar link público sin mínimos coherentes</td></tr>
-</table>
-
-<p><strong>Permisos (decisión explícita)</strong></p>
-
-<table>
-<tr><th>Rol</th><th>Ver agenda</th><th>Crear/editar reservas</th><th>Configuración</th></tr>
-<tr><td>Admin / dueño</td><td>☐</td><td>☐</td><td>☐</td></tr>
-<tr><td>Recepción / coord.</td><td>☐</td><td>☐</td><td>☐</td></tr>
-<tr><td>Profesional</td><td>☐</td><td>☐</td><td>☐</td></tr>
-</table>
-
-<p><em>Regla rápida:</em> profesional ve su agenda; recepción crea/edita; admin todo.</p>
-
-<p><strong>Hito deseable si hay tiempo:</strong> reserva de prueba end-to-end.</p>
-
-<hr/>
-
-</section>
-<section class="card" id="6-3-bloque-c-cierre-3-5-min"><h2>6.3 Bloque C — Cierre (3–5 min)</h2>
-
-<ul><li>Cumplir checklist de éxito (§5)  </li><li><strong>2ª sesión agendada</strong> (fecha) o 2 opciones concretas  </li><li>Tareas con responsable y fecha (tabla §8)  </li><li>Opcional: <em>“¿Qué quedó más claro y qué sigue confuso?”</em></li></ul>
-
-<hr/>
-
-</section>
-<h1>7. Antes / después de la reunión</h1>
-
-<h3>Antes (solo esto)</h3>
-<ul><li>☐ Decisor (o quien puede comprometer) en la llamada  </li><li>☐ Pantalla compartida posible  </li><li>☐ Acceso a cuenta + tareas B2B3+ CM abiertas  </li></ul>
-
-<h3>Después</h3>
-<ul><li>☐ Prioridad y notas en tareas B2B3+ CM  </li><li>☐ 2ª en calendario  </li><li>☐ Pendiente de config listado con fecha  </li></ul>
-
-<hr/>
-
-<h1>8. Continuidad — tareas típicas post-sesión</h1>
-
-<table>
-<tr><th>#</th><th>Tarea</th><th>Responsable</th><th>Fecha</th></tr>
-<tr><td>1</td><td>Completar / afinar catálogo de servicios</td><td></td><td></td></tr>
-<tr><td>2</td><td>Afinar horarios reales + bloqueos</td><td></td><td></td></tr>
-<tr><td>3</td><td>Política simple cancelación / reprogramación / seña (si aplica)</td><td></td><td></td></tr>
-</table>
-
-<hr/>
-
-<h1>9. Flujo pre-sesión: ISR + persistencia</h1>
-
-<section class="card" id="9-1-objetivo-de-proceso"><h2>9.1 Objetivo de proceso</h2>
-<p>Que el B2B3+ <strong>agende</strong> la sesión de configuración idealmente el mismo día del pago o el siguiente hábil.</p>
-
-</section>
-<section class="card" id="9-2-bienvenida-chatwoot-obligatorio"><h2>9.2 Bienvenida (Chatwoot — obligatorio)</h2>
-<ul><li>Sale desde <strong>línea WhatsApp de onboarding</strong> (sin grupo).  </li><li>Template firma como <strong>onboarder asignado</strong> (<code>{{ agent.name }}</code>).  </li><li>ISR dispara y completa variables; no firma con su nombre.  </li><li><strong>No</strong> pedir sedes/servicios/horarios/roles por WA antes de la reunión.</li></ul>
-
-</section>
-<section class="card" id="9-3-persistencia-onboarder-m-x-1-semana"><h2>9.3 Persistencia (onboarder) — máx. 1 semana</h2>
-<p>Contactos diarios alternando mensaje y llamada. Un pedido claro por contacto.  </p>
-<p>Salida respetuosa: <em>“Si esta semana no pueden, indiquen qué día les funciona.”</em></p>
-
-</section>
-<section class="card" id="9-4-control-cruzado-anti-ghosting"><h2>9.4 Control cruzado (anti-ghosting)</h2>
-<p>Si no responde: segundo asesor como <strong>Área de Contactabilidad</strong> (validar canal + urgencia + agendar). Registrar en CM / doc compartido.</p>
-
-<hr/>
-
-</section>
-<h1>10. Situaciones especiales (si → entonces)</h1>
+<h1>8. Situaciones especiales (Solo SaaS)</h1>
 
 <table>
 <tr><th>Si…</th><th>Entonces…</th></tr>
-<tr><td>Cliente apurado / “vamos directo al sistema”</td><td>8–10 min a 4 temas + espejo; config solo lo esencial; resto a 2ª</td></tr>
-<tr><td>Uso avanzado previo</td><td>Priorizar orden/corrección (duplicados, fantasma, categorías) antes de sumar</td></tr>
-<tr><td>Solo recepción en la call</td><td>Simplificar temas; acordar quién completa tareas entre sesiones</td></tr>
-<tr><td>Negocio 1–3 personas</td><td>Permisos + servicios top + horario base; menos carga cognitiva</td></tr>
-<tr><td>Multi-sede / muchos profesionales</td><td>+10 min; no sacrificar espejo ni cierre</td></tr>
-<tr><td>Cuenta con POS+boletas y el onboarder es JR</td><td><strong>No</strong> tomar ese caso en rampa inicial; derivar según política TL</td></tr>
+<tr><td>Cliente apurado</td><td>8–10 min a 4 temas + espejo; config esencial; resto a 2ª</td></tr>
+<tr><td>Etiqueta POS/FE aparece en el chat</td><td><strong>Stop</strong> — no es Track A; usar Track B / escalar TL</td></tr>
+<tr><td>Solo recepción en la call</td><td>Simplificar; acordar quién completa tareas</td></tr>
+<tr><td>Multi-sede</td><td>+10 min; no sacrificar espejo ni cierre</td></tr>
 </table>
 
 <hr/>
 
-<h1>11. Plantillas al cliente</h1>
+<h1>9. Playbook 1 página — Track A Solo SaaS</h1>
 
-<h3>11.1 Bienvenida (ISR → línea onboarding)</h3>
+<p><strong>Antes:</strong> confirmar venta = Solo SaaS · canal abierto · R1 45 min · CM abierto  </p>
+<p><strong>A:</strong> encuadre → 4 temas → espejo → tareas B2B3 CM  </p>
+<p><strong>B:</strong> sedes → prof → horarios → servicios → permisos → link  </p>
+<p><strong>C:</strong> 5 pilares · 2ª · tareas  </p>
 
-<p>&quot;¡Hola {{ contact.first_name }}! Te damos la bienvenida a AgendaPro. Tu cuenta ya está activa; para acceder andá a <strong>www.agendapro.com</strong>, seleccioná <strong>Ir a mi cuenta</strong> e ingresá con tu usuario y contraseña.</p>
-
-<p>Soy {{ agent.name }}, tu ejecutivo/a de implementación. Este chat será nuestro canal. Te acompaño para que puedas usar AgendaPro y sacarle provecho a tu plan.</p>
-
-<p>Para comenzar, <strong>agendá nuestra sesión de configuración inicial</strong> en este link: <strong>[INSERTAR_LINK_AQUÍ]</strong></p>
-
-<p>¡Quedo atento/a a tu confirmación!&quot;</p>
-
-<h3>11.2 Contactabilidad — llamada</h3>
-<p>&quot;Hola {{ contact.first_name }}, te habla [Nombre] del Área de Contactabilidad de AgendaPro. Te contacto porque tu cuenta B2B ya está activa, pero aún no concretamos tu sesión de setup con tu asesor. ¿Tuviste algún inconveniente con el link o preferís que busquemos un horario ahora?&quot;</p>
-
-<h3>11.3 Contactabilidad — WhatsApp</h3>
-<p>&quot;Hola {{ contact.first_name }}, te saluda [Nombre] de Contactabilidad AgendaPro. Vimos tu implementación en pausa. ¿El link de agendamiento te funcionó o preferís que te asigne un espacio para la sesión de configuración?&quot;</p>
+<p><strong>No:</strong> formularios POS · máquina · boletas · mezclar con Track B  </p>
 
 <hr/>
 
-<h1>12. Playbook 1 página (imprimible / Lab)</h1>
+<h1>10. Ejemplos calibración</h1>
 
-<p><strong>Tiempo:</strong> ~15 min kickoff + resto config + 3–5 cierre (+10 multi-sede)</p>
-
-<p><strong>Antes:</strong> acceso · decisor · pantalla · tareas B2B3 CM abiertas  </p>
-
-<p><strong>A.</strong> Encuadre → 4 temas (diálogo) → espejo → registro CM  </p>
-<p><strong>B.</strong> Sedes → prof → horarios → servicios → permisos → link/prueba si da  </p>
-<p><strong>C.</strong> Éxito 5 pilares · 2ª agendada · tareas con fecha  </p>
-
-<p><strong>Sí verde:</strong> espejo con prioridad humana · notas en CM · 2ª fecha  </p>
-<p><strong>Rojo:</strong> encuesta “4 preguntas” · config en primeros ~10 min sin espejo · JR en POS+boletas  </p>
+<p><strong>Dorado:</strong> diálogo de negocio → espejo con prioridad → CM → config alineada a prioridad → 2ª.  </p>
+<p><strong>Rojo:</strong> “vamos a configurar” sin espejo · o tratar un caso POS como si fuera Solo SaaS.</p>
 
 <hr/>
 
-<h1>13. Ejemplos de calibración (usar en Lab / shadow)</h1>
-
-<h3>Dorado (patrón a replicar)</h3>
-<p>Encuadre colaborativo → cliente habla del negocio y del dolor → ejecutivo completa “antes” y “quién opera” con curiosidad → espejo con prioridad explícita → escribe prioridad en tarea B2B3 CM → avanza 2–3 piezas de config alineadas a esa prioridad → agenda 2ª.</p>
-
-<h3>Rojo (no replicar)</h3>
-<p>Saludo breve → “vamos a configurar servicios” → 25 min en catálogo → sin espejo → sin prioridad en CM → “cualquier duda me escribes” sin 2ª fecha.  </p>
-<p>O: <em>“Te haré cuatro preguntas: una… dos… tres…”</em> (suena a encuesta).</p>
-
-<p><em>(Opcional: pegar aquí IDs Diio anonimizados del equipo cuando existan clips pactados.)</em></p>
-
-<hr/>
-
-<h1>14. Checklist de comunicación asertiva</h1>
+<h1>11. Historial</h1>
 
 <table>
-<tr><th>Hacer</th><th>Evitar</th></tr>
-<tr><td>Objetivo de la reunión en una frase</td><td>Jerga interna</td></tr>
-<tr><td>Pedir permiso para <strong>pantalla</strong></td><td>Anunciar “cuestionario de 4 preguntas”</td></tr>
-<tr><td>Explicar que lo acordado queda en el seguimiento del equipo (CM)</td><td>Presión moral / culpa</td></tr>
-<tr><td>2 opciones concretas si no pueden hoy</td><td>Mensajes largos sin un solo pedido</td></tr>
-<tr><td>Cerrar con resumen + “¿Tiene sentido?”</td><td>Colgar sin próxima fecha</td></tr>
+<tr><th>Ver</th><th>Cambio</th></tr>
+<tr><td><strong>2.1</strong></td><td>Separación Track A Solo SaaS vs Track B POS/FE. Handoff alineado a Notion (ISR agenda R1, SLA 48h, Chatwoot/WA, sin form en Solo SaaS).</td></tr>
+<tr><td>2.0</td><td>Canónico unificado (pre-separación de tracks).</td></tr>
 </table>
 
 <hr/>
 
-<h1>15. Historial</h1>
-
-<table>
-<tr><th>Versión</th><th>Cambio</th></tr>
-<tr><td><strong>2.0</strong></td><td>Canónico unificado. Notas → tareas B2B3+ CM. 4 temas = mapa interno (no anunciar). JR sin POS+boletas. Portada holística, RACI, acción×evidencia, si→entonces, ejemplos dorado/rojo. Elimina HubSpot como registro de kickoff.</td></tr>
-<tr><td>1.x</td><td>Paquete manual + procedimiento (ISR Chatwoot, sin checklist previo WA, kickoff 15 min, éxito consultivo).</td></tr>
-</table>
-
-<hr/>
-
-<p><em>AgendaPro · Blueprint Onboarding B2B v2.0 · Enablement / CX · Uso interno</em></p>
-  <footer>AgendaPro · Blueprint Onboarding B2B v2.0 · Uso interno</footer>
+<p><em>AgendaPro · Blueprint R1 Solo SaaS v2.1 · Track A · Uso interno</em></p>
+<footer>AgendaPro · Blueprint R1 Solo SaaS v2.1 · Uso interno</footer>
 </main>
-<script>
-(function(){
-  var KEY='kickoff-tl';
-  var gate=document.getElementById('gate');
-  var app=document.getElementById('app');
-  var input=document.getElementById('gate-input');
-  var err=document.getElementById('gate-err');
-  function unlock(){sessionStorage.setItem('ap_blueprint_v2_ok','1');gate.classList.add('hidden');app.hidden=false;}
-  function tryUnlock(){
-    if((input.value||'').trim().toLowerCase()===KEY) unlock();
-    else {err.textContent='Clave incorrecta';input.focus();}
-  }
-  if(sessionStorage.getItem('ap_blueprint_v2_ok')==='1') unlock();
-  document.getElementById('gate-btn').onclick=tryUnlock;
-  input.addEventListener('keydown',function(e){if(e.key==='Enter')tryUnlock();});
-})();
-</script>
-</body>
-</html>
+<script>(function(){var KEY='kickoff-tl';var g=document.getElementById('gate'),a=document.getElementById('app'),i=document.getElementById('gate-input'),e=document.getElementById('gate-err');
+function u(){sessionStorage.setItem('ap_bp_a','1');g.classList.add('hidden');a.hidden=false}
+function t(){if((i.value||'').trim().toLowerCase()===KEY)u();else{e.textContent='Clave incorrecta';i.focus()}}
+if(sessionStorage.getItem('ap_bp_a')==='1')u();
+document.getElementById('gate-btn').onclick=t;i.addEventListener('keydown',function(ev){if(ev.key==='Enter')t()});})();</script>
+</body></html>
