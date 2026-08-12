@@ -188,9 +188,9 @@ Repasar éxito · confirmar acción de uso/compromiso · agendar próxima sesió
 # 9. Guía de una página
 
 **Antes:** venta = Solo SaaS · canal abierto · 45 min · Company Management abierto  
-**A:** encuadre → 4 temas → espejo → B2B3+  
+**A:** encuadre → 4 temas → espejo → B2B3+ completo  
 **B:** sedes → profesionales → horarios → servicios → permisos → link  
-**C:** éxito · próxima sesión · tareas  
+**C:** éxito · acción de uso ≤72 h · próxima sesión · tareas  
 
 **No:** formularios POS · máquina · boletas · mezclar con Ruta B  
 
